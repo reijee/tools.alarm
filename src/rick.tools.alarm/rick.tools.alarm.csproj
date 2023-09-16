@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>rick.tools.alarm</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x86;x64;ARM64</Platforms>
+    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <UseWinUI>true</UseWinUI>
+	  <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+	  <ApplicationIcon>Assets\icon\alarm.ico</ApplicationIcon>
+	  <PackageIcon>alarm.png</PackageIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Controls\NotifyIconControl.xaml" />
+    <None Remove="Layouts\NavigationLayout.xaml" />
+    <None Remove="Pages\AlarmPage.xaml" />
+    <None Remove="Pages\HomePage.xaml" />
+    <None Remove="Pages\SettingPage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="H.NotifyIcon.WinUI" Version="2.0.108" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.230331000" />
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Assets\icon\alarm.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Layouts\NavigationLayout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\NotifyIconControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Pages\AlarmPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Pages\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Pages\SettingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

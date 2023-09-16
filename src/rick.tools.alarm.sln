@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rick.tools.alarm", "rick.tools.alarm\rick.tools.alarm.csproj", "{E9E733C2-E40D-4C64-A0EB-D29C4282B168}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9E733C2-E40D-4C64-A0EB-D29C4282B168}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{E9E733C2-E40D-4C64-A0EB-D29C4282B168}.Debug|ARM64.Build.0 = Debug|ARM64
+		{E9E733C2-E40D-4C64-A0EB-D29C4282B168}.Debug|x64.ActiveCfg = Debug|x64
+		{E9E733C2-E40D-4C64-A0EB-D29C4282B168}.Debug|x64.Build.0 = Debug|x64
+		{E9E733C2-E40D-4C64-A0EB-D29C4282B168}.Debug|x86.ActiveCfg = Debug|x86
+		{E9E733C2-E40D-4C64-A0EB-D29C4282B168}.Debug|x86.Build.0 = Debug|x86
+		{E9E733C2-E40D-4C64-A0EB-D29C4282B168}.Release|ARM64.ActiveCfg = Release|ARM64
+		{E9E733C2-E40D-4C64-A0EB-D29C4282B168}.Release|ARM64.Build.0 = Release|ARM64
+		{E9E733C2-E40D-4C64-A0EB-D29C4282B168}.Release|x64.ActiveCfg = Release|x64
+		{E9E733C2-E40D-4C64-A0EB-D29C4282B168}.Release|x64.Build.0 = Release|x64
+		{E9E733C2-E40D-4C64-A0EB-D29C4282B168}.Release|x86.ActiveCfg = Release|x86
+		{E9E733C2-E40D-4C64-A0EB-D29C4282B168}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFC0662C-3E6C-4E52-BF2C-A96C8A79F7AF}
+	EndGlobalSection
+EndGlobal
