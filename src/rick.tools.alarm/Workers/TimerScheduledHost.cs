@@ -67,16 +67,14 @@ namespace rick.tools.alarm.Workers
 
         private void ExecWorker(TimerWorkerItem worker)
         {
-            //Task.Run(() =>
-            //{
-                try
-                {
-                    worker.WorkerFun();
-                }
-                finally { 
-                    worker.NextRunTime = DateTime.Now.Add(worker.Period);
-                }
-            //});
+            try
+            {
+                worker.WorkerFun();
+            }
+            finally
+            {
+                worker.NextRunTime = DateTime.Now.Add(worker.Period);
+            }
         }
 
         private class TimerWorkerItem
