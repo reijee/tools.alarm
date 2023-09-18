@@ -59,7 +59,7 @@ namespace rick.tools.alarm
             App.AlarmRepository = new LeeAlarmRepository();
 
             // 定时器
-            App.TimerSchedule = TimerScheduledHost.CreateHost().Start();
+            App.TimerSchedule = TimerScheduledHost.CreateHost();
         }
 
         /// <summary>

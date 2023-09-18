@@ -30,12 +30,10 @@ namespace rick.tools.alarm.Pages
         {
             this.InitializeComponent();
 
-            App.TimerSchedule.Register(() =>
+            App.TimerSchedule.TimerTick += (sender, e) =>
             {
                 txt.Text = DateTime.Now.ToString();
-
-                return true;
-            }, "Ê×Ò³²âÊÔ", TimeSpan.FromSeconds(1));
+            };
         }
     }
 }
