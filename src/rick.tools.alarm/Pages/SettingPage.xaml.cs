@@ -31,8 +31,22 @@ namespace rick.tools.alarm.Pages
         {
             this.InitializeComponent();
 
-            displayModePanel.SelectedItem = App.Settings.DisplayMode;
-            themePanel.SelectedItem = App.Settings.Theme;
+            foreach (var item in themePanel.Items)
+            {
+                if ((ElementTheme)((RadioButton)item).Tag == App.Settings.Theme)
+                {
+                    themePanel.SelectedItem = item;
+                    break;
+                }
+            }
+            foreach (var item in displayModePanel.Items)
+            {
+                if ((NavigationViewPaneDisplayMode)((RadioButton)item).Tag == App.Settings.DisplayMode)
+                {
+                    displayModePanel.SelectedItem = item;
+                    break;
+                }
+            }
         }
 
         private void ThomeRadioButton_Checked(object sender, RoutedEventArgs e)

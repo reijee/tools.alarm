@@ -42,7 +42,7 @@ namespace rick.tools.alarm
 
         public static GlobalSetting Settings;
 
-        public static LeeAlarmRepository AlarmRepository;
+        public static LeeAlarmManager AlarmManager;
 
         public static TimerScheduledHost TimerSchedule;
 
@@ -56,10 +56,21 @@ namespace rick.tools.alarm
 
             // 数据存储
             App.Settings = GlobalSetting.CrearteInstance();
-            App.AlarmRepository = new LeeAlarmRepository();
+            App.AlarmManager = new LeeAlarmManager();
 
             // 定时器
             App.TimerSchedule = TimerScheduledHost.CreateHost();
+            App.TimerSchedule.TimerTick += AlarmSchedule_TimerTick;
+        }
+
+        /// <summary>
+        /// 触发定时器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AlarmSchedule_TimerTick(object sender, TimerTickEventArgs e)
+        {
+            
         }
 
         /// <summary>

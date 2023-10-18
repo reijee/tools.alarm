@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace rick.tools.alarm.Data
 {
-    public class LeeAlarmRepository: Repository<LeeAlarm>
+    public class LeeAlarmManager: Repository<LeeAlarm>
     {
         private List<LeeAlarm> _alarmList;
         private Repository<LeeAlarm> _repository;
 
-        public LeeAlarmRepository() 
+        public LeeAlarmManager() 
         {
             _repository = new Repository<LeeAlarm>();
             _alarmList = _repository.Query();
