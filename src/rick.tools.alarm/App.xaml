@@ -14,6 +14,8 @@
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
             <SolidColorBrush x:Key="WindowCaptionBackground">Transparent</SolidColorBrush>
+
+            <x:String x:Key="AppTitleName">闹钟</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

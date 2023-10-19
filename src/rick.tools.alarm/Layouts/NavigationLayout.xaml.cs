@@ -3,9 +3,11 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
+using rick.tools.alarm.Helpers;
 using rick.tools.alarm.Pages;
 using System;
 
@@ -38,7 +40,7 @@ namespace rick.tools.alarm.Layouts
             this.SystemBackdrop = new MicaBackdrop();
 
             // ≈‰÷√÷˜Ã‚
-            RootElement.RequestedTheme = App.Settings.Theme;
+            WindowHelper.ApplySystemTheme(this, App.Settings.Theme);
 
             // ≈‰÷√µº∫Ω
             SetPaneDisplayMode(App.Settings.DisplayMode);

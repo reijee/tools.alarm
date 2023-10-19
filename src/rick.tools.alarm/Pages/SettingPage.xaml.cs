@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using rick.tools.alarm.Helpers;
 using rick.tools.alarm.Layouts;
 using System;
 using System.Collections.Generic;
@@ -31,41 +32,60 @@ namespace rick.tools.alarm.Pages
         {
             this.InitializeComponent();
 
-            foreach (var item in themePanel.Items)
+            SetSettingValue();
+        }
+
+        private void SetSettingValue()
+        {
+            switch (App.Settings.Theme)
             {
-                if ((ElementTheme)((RadioButton)item).Tag == App.Settings.Theme)
-                {
-                    themePanel.SelectedItem = item;
+                case ElementTheme.Light:
+                    themeMode.SelectedIndex = 0;
                     break;
-                }
+                case ElementTheme.Dark:
+                    themeMode.SelectedIndex = 1;
+                    break;
+                case ElementTheme.Default:
+                    themeMode.SelectedIndex = 2;
+                    break;
             }
-            foreach (var item in displayModePanel.Items)
+
+            if (App.Settings.DisplayMode == NavigationViewPaneDisplayMode.Top)
             {
-                if ((NavigationViewPaneDisplayMode)((RadioButton)item).Tag == App.Settings.DisplayMode)
-                {
-                    displayModePanel.SelectedItem = item;
-                    break;
-                }
+                navigationLocation.SelectedIndex = 1;
+            }
+            else
+            {
+                navigationLocation.SelectedIndex = 0;
             }
         }
 
-        private void ThomeRadioButton_Checked(object sender, RoutedEventArgs e)
+        private void themeMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ElementTheme selectedTheme = (ElementTheme)((RadioButton)sender).Tag;
-
-            Grid content = App.MainLayout.Content as Grid;
-            if (content is not null)
-            {
-                content.RequestedTheme = selectedTheme;
-                App.Settings.Theme = selectedTheme;
-            }
+            var selectedTheme = ((ComboBoxItem)themeMode.SelectedItem)?.Tag?.ToString();
+            var theme = EnumHelper.GetEnum<ElementTheme>(selectedTheme);
+            WindowHelper.ApplySystemTheme(App.MainLayout, theme);
+            App.Settings.Theme = theme;
         }
 
-        private void NavRadioButton_Checked(object sender, RoutedEventArgs e)
+        private void navigationLocation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var positon = (NavigationViewPaneDisplayMode)((RadioButton)sender).Tag;
+            var positon = NavigationViewPaneDisplayMode.Left;
+            if (navigationLocation.SelectedIndex != 0)
+            {
+                positon = NavigationViewPaneDisplayMode.Top;
+            }
             (App.MainLayout as NavigationLayout).SetPaneDisplayMode(positon);
             App.Settings.DisplayMode = positon;
+        }
+
+        public string Version
+        {
+            get
+            {
+                var version = System.Reflection.Assembly.GetEntryAssembly().GetName().Version;
+                return string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
+            }
         }
     }
 }

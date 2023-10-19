@@ -35,7 +35,7 @@
                        VerticalAlignment="Center"
                        Margin="4,0,0,0"/>
                 <TextBlock x:Name="TitleTextBlock" 
-                   Text="App title" 
+                   Text="{StaticResource AppTitleName}" 
                    Style="{StaticResource CaptionTextBlockStyle}"
                    VerticalAlignment="Center"
                    Margin="8,0,0,0"/>

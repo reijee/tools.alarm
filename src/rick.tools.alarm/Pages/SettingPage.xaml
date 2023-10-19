@@ -7,9 +7,26 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:rick.tools.alarm.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
+    <Page.Resources>
+        <!--  These styles can be referenced to create a consistent SettingsPage layout  -->
 
+        <!--  Spacing between cards  -->
+        <x:Double x:Key="SettingsCardSpacing">3</x:Double>
+
+        <!--  Style (inc. the correct spacing) of a section header  -->
+        <Style
+            x:Key="SettingsSectionHeaderTextBlockStyle"
+            BasedOn="{StaticResource BodyStrongTextBlockStyle}"
+            TargetType="TextBlock">
+            <Style.Setters>
+                <Setter Property="Margin" Value="1,29,0,5" />
+            </Style.Setters>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -28,46 +45,43 @@
             UseSystemFocusVisuals="False"
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
-            <StackPanel>
-                <StackPanel Spacing="10" Margin="10,10,10,10" >
-                    <TextBlock Text="主题颜色" Style="{StaticResource BodyStrongTextBlockStyle}"/>
-                    <RadioButtons x:Name="themePanel">
-                        <RadioButton Checked="ThomeRadioButton_Checked" Content="浅色">
-                            <RadioButton.Tag>
-                                <ElementTheme>Light</ElementTheme>
-                            </RadioButton.Tag>
-                        </RadioButton>
-                        <RadioButton Checked="ThomeRadioButton_Checked" Content="深色">
-                            <RadioButton.Tag>
-                                <ElementTheme>Dark</ElementTheme>
-                            </RadioButton.Tag>
-                        </RadioButton>
-                        <RadioButton Checked="ThomeRadioButton_Checked" Content="跟随系统">
-                            <RadioButton.Tag>
-                                <ElementTheme>Default</ElementTheme>
-                            </RadioButton.Tag>
-                        </RadioButton>
-                    </RadioButtons>
-                </StackPanel>
+            <StackPanel Spacing="{StaticResource SettingsCardSpacing}">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="主题及样式" />
+                <toolkit:SettingsCard Description="请选择应用的主题颜色" Header="主题颜色">
+                    <toolkit:SettingsCard.HeaderIcon>
+                        <FontIcon Glyph="&#xE790;" />
+                    </toolkit:SettingsCard.HeaderIcon>
+                    <ComboBox x:Name="themeMode" SelectionChanged="themeMode_SelectionChanged">
+                        <ComboBoxItem Content="浅色" Tag="Light" />
+                        <ComboBoxItem Content="深色" Tag="Dark" />
+                        <ComboBoxItem Content="跟随系统" Tag="Default" />
+                    </ComboBox>
+                </toolkit:SettingsCard>
 
-                <StackPanel Spacing="10" Margin="10,10,10,10" >
-                    <TextBlock Text="导航位置" Style="{StaticResource BodyStrongTextBlockStyle}"/>
-                    <RadioButtons x:Name="displayModePanel">
-                        <RadioButton Checked="NavRadioButton_Checked"  Content="左侧">
-                            <RadioButton.Tag>
-                                <NavigationViewPaneDisplayMode>Left</NavigationViewPaneDisplayMode>
-                            </RadioButton.Tag>
-                        </RadioButton>
-                        <RadioButton Checked="NavRadioButton_Checked" Content="顶部">
-                            <RadioButton.Tag>
-                                <NavigationViewPaneDisplayMode>Top</NavigationViewPaneDisplayMode>
-                            </RadioButton.Tag>
-                        </RadioButton>
-                    </RadioButtons>
-                </StackPanel>
+                <toolkit:SettingsCard Header="导航位置">
+                    <toolkit:SettingsCard.HeaderIcon>
+                        <FontIcon Glyph="&#xF594;" />
+                    </toolkit:SettingsCard.HeaderIcon>
+                    <ComboBox x:Name="navigationLocation" SelectionChanged="navigationLocation_SelectionChanged">
+                        <ComboBoxItem Content="左侧" />
+                        <ComboBoxItem Content="顶部" />
+                    </ComboBox>
+                </toolkit:SettingsCard>
+
+                <!--  About  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="关于" />
+                <toolkit:SettingsExpander Description="© 2023 Microsoft. All rights reserved." Header="{StaticResource AppTitleName}">
+                    <toolkit:SettingsExpander.HeaderIcon>
+                        <FontIcon Glyph="&#xE80F;" />
+                    </toolkit:SettingsExpander.HeaderIcon>
+                    <TextBlock Foreground="{ThemeResource TextFillColorSecondaryBrush}" IsTextSelectionEnabled="True" Text="{x:Bind Version}" />
+                    <toolkit:SettingsExpander.Items>
+                        <toolkit:SettingsCard Header="代码仓库">
+                            <TextBlock Foreground="{ThemeResource TextFillColorSecondaryBrush}" IsTextSelectionEnabled="True"  Text="git clone https://github.com/reijee/tools.alarm.git" />
+                        </toolkit:SettingsCard>
+                    </toolkit:SettingsExpander.Items>
+                </toolkit:SettingsExpander>
             </StackPanel>
-           
-            
         </ScrollViewer>
     </Grid>
 </Page>
