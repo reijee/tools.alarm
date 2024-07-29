@@ -27,7 +27,7 @@
             UseSystemFocusVisuals="False"
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
-            <StackPanel>
+            <StackPanel Orientation="Horizontal">
                 
             </StackPanel>
         </ScrollViewer>

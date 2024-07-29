@@ -22,6 +22,15 @@ namespace rick.tools.alarm.Data.Entitys
         public bool IsActive { get; set; } = true;
 
         [JsonIgnore]
-        public DateTime NextActiveTime { get; set; }
+        public DateTime NextActiveTime { 
+            get {
+                var nextTime = DateTime.Today.Add(this.AlarmTime.ToTimeSpan());
+                if (nextTime < DateTime.Now) nextTime = nextTime.AddDays(1);
+                return nextTime;
+            } 
+        }
+
+        [JsonIgnore]
+        public string AlarmMessage { get; set; }
     }
 }
